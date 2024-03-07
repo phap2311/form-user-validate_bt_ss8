@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+  <title>ListCustomer</title>
+</head>
+<body>
+<h3>User</h3>
+<p>
+  <a th:href="@{/user/create}">
+    Add new user
+  </a>
+</p>
+
+<div class="notify">
+  <div th:if="${success}">
+    <span th:text="${success}"></span>
+  </div>
+</div>
+
+<table id = "user">
+  <thead>
+  <tr>
+    <th>firstName</th>
+    <th>lastEmail</th>
+    <th>phoneNumber</th>
+    <th>age</th>
+    <th>email</th>
+
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="row,rowStat : ${user}">
+    <td th:text="${row.getFirstName()}"></td>
+    <td th:text="${row.getLastName()}"></td>
+    <td th:text="${row.getPhoneNumber()}"></td>
+    <td th:text="${row.getAge()}"></td>
+    <td th:text="${row.getEmail()}"></td>
+  </tr>
+  </tbody>
+</table>
+<footer th:replace="/layout::footer"></footer>
+</body>
+</html>
